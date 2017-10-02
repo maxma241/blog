@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="zh-TW"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> graphql學習筆記-1 · Max Ma's tech blog</title><meta name="description" content="graphql學習筆記-1 - Max Ma"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://github.com/maxma241/blog/atom.xml" title="Max Ma's tech blog"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">graphql學習筆記-1</h1><div class="post-info">2017年9月30日</div><div class="post-content"><h1 id="GraphQL筆記-1"><a href="#GraphQL筆記-1" class="headerlink" title="GraphQL筆記-1"></a>GraphQL筆記-1</h1><h2 id="簡單介紹"><a href="#簡單介紹" class="headerlink" title="簡單介紹"></a>簡單介紹</h2><p>GraphQL是Facebook釋出的一個Web Service Open Source，<br>將RESTful service的形式改變成單一path，<br>透過自己訂出的GraphQL格式(塞在request body or query)來call需要的service node(節點)</p>
+<ul>
+<li>client side可依需求request需要的欄位就好了，避免API來了一大坨資料，而前端只需要部分資料</li>
+<li>server side開發GraphQL時會定義每個節點的type，所以開發的時候就順便建立好了API DOC，graphql提供一個graphiql的介面可直接測試API，並且可以直接看API docs</li>
+</ul>
+<p>query example</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// at client using apollo-client to call graphql API</span></div><div class="line"><span class="comment">// query</span></div><div class="line">&#123; </div><div class="line">  me &#123;</div><div class="line">    id</div><div class="line">    name</div><div class="line">    email</div><div class="line">    createAt</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// will get content of reponse like</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"data"</span>: &#123;</div><div class="line">    <span class="string">"me"</span>: &#123;</div><div class="line">      <span class="string">"id"</span>: <span class="string">"id123"</span>,</div><div class="line">      <span class="string">"name"</span>: <span class="string">"max"</span>,</div><div class="line">      <span class="string">"email"</span>: <span class="string">"accountemail@abc.com"</span>,</div><div class="line">      <span class="string">"createAt"</span>: <span class="string">"2017-09-30T09:24:17.191Z"</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="GraphQL-與-RESTful-service-的對應"><a href="#GraphQL-與-RESTful-service-的對應" class="headerlink" title="GraphQL 與 RESTful service 的對應"></a>GraphQL 與 RESTful service 的對應</h2><p>GraphQL request types主要分為三種 Query, Mutation, Subscription(web socket)</p>
+<p>對應表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">GraphQL</th>
+<th style="text-align:center">REST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">Query</td>
+<td style="text-align:center">GET</td>
+</tr>
+<tr>
+<td style="text-align:right">Mutation</td>
+<td style="text-align:center">POST/PUT/DELETE</td>
+</tr>
+</tbody>
+</table>
+<h6 id="subscription-還沒碰過"><a href="#subscription-還沒碰過" class="headerlink" title="subscription 還沒碰過"></a>subscription 還沒碰過</h6><p>先這樣 </p>
+<p>之後會陸續更新 server side 實作 及 client side(會用vue-apollo) 如何call graphql service</p>
+</div></article></div></main><footer><div class="paginator"></div><div class="copyright"><p>© 2015 - 2017 <a href="https://github.com/maxma241/blog">Max Ma</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
